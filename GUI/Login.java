@@ -68,6 +68,8 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -100,6 +102,13 @@ class Myframe implements ActionListener {
         Txt_username = new JTextField();
         myframe.add(Txt_username);
         Txt_username.setBounds(150, 25, 80, 20);
+        Txt_username.addKeyListener(new KeyAdapter() {
+          public void keyPressed(KeyEvent e) {
+              if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                  Txt_pass.requestFocus();
+              }
+          }
+      });
 
         // Password label
         JLabel lbl_password = new JLabel("Password");
@@ -151,8 +160,8 @@ class Myframe implements ActionListener {
            {
             //  System.out.println("login success ");
              JOptionPane.showMessageDialog(null,"Login success");
-             myframe.setVisible(false);//to access personal file 
-             Personal1.main(null);
+            //  myframe.setVisible(false);//to access personal file 
+            //  Personal1.main(null);
               
            }
            else

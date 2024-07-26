@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,6 +39,14 @@ public class email implements ActionListener
         txt_email=new JTextField();
         myFrame.add(txt_email);
         txt_email.setBounds(69, 50, 100, 20);
+        // txt_email.addActionListener(this);
+        txt_email.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    txt_mno.requestFocus();
+                }
+            }
+        });
         txt_email.addActionListener(this);
 
         lbl_mno =new JLabel("Mo.no");
@@ -48,6 +58,7 @@ public class email implements ActionListener
         myFrame.add(txt_mno);
         txt_mno.setBounds(69, 75, 100, 20);
         txt_mno.addActionListener(this);
+         
 
         btn_login=new JButton("Login");
         myFrame.add(btn_login);
